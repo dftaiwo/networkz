@@ -1,0 +1,41 @@
+{
+    # Use a real email & remove `local_certs` when deploying behind a public DNS.
+    # local_certs
+    # email admin@example.com
+}
+
+# Replace this with your real domain for ACME TLS.
+:80 {
+    encode gzip zstd
+
+    # Static SPA
+    root * /srv
+    file_server
+
+    # Cache /uploads aggressively (immutable image filenames).
+    handle_path /uploads/* {
+        root * /data/uploads
+        file_server
+        header Cache-Control "public, max-age=31536000, immutable"
+    }
+
+    # API proxy
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    # Swagger / health on the backend (optional)
+    handle /docs* {
+        reverse_proxy backend:8000
+    }
+    handle /openapi.json {
+        reverse_proxy backend:8000
+    }
+
+    # SPA fallback — let React Router handle unknown routes
+    @notapi not path /api/* /uploads/* /docs* /openapi.json
+    handle @notapi {
+        try_files {path} /index.html
+        file_server
+    }
+}

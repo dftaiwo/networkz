@@ -83,7 +83,7 @@ export function FilterBar({
       {(value.q || value.country || value.year || value.industry) && (
         <div className="mt-3 flex justify-end">
           <button
-            className="text-xs font-semibold text-slate-500 hover:text-slate-900 underline"
+            className="text-xs font-semibold text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white underline"
             onClick={() => onChange({ q: "", country: "", year: "", industry: "" })}
           >
             Clear filters

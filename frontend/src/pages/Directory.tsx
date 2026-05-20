@@ -70,8 +70,8 @@ export default function Directory() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Alumni directory</h1>
-        <p className="text-slate-600 mt-1">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Alumni directory</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">
           Browse startups that went through the Google for Startups Accelerator.
         </p>
       </div>

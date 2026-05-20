@@ -24,7 +24,7 @@ export default function ProfileDetail() {
   if (notFound) {
     return (
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-semibold text-slate-900">Profile not found</h1>
+        <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">Profile not found</h1>
         <Link to="/directory" className="mt-4 inline-flex btn-primary">Back to directory</Link>
       </div>
     );
@@ -36,7 +36,7 @@ export default function ProfileDetail() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between">
-        <Link to="/directory" className="text-sm text-slate-500 hover:text-slate-900">← Directory</Link>
+        <Link to="/directory" className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">← Directory</Link>
         {isOwner && (
           <Link to="/my-profile" className="btn-ghost text-xs">Edit your profile</Link>
         )}
@@ -44,9 +44,9 @@ export default function ProfileDetail() {
 
       <div className="mt-4 card overflow-hidden">
         {/* Hero logo plate — natural aspect, large */}
-        <div className="relative aspect-[16/6] overflow-hidden border-b border-slate-100 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]">
+        <div className="relative aspect-[16/6] overflow-hidden border-b border-slate-100 dark:border-slate-800 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)] dark:bg-[linear-gradient(135deg,#0f172a_0%,#1e293b_50%,#1e1b4b_100%)]">
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.05]"
+            className="pointer-events-none absolute inset-0 opacity-[0.05] dark:opacity-[0.09]"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 20% 30%, #3730A3 0, transparent 40%), radial-gradient(circle at 80% 70%, #10B981 0, transparent 40%)",
@@ -61,7 +61,7 @@ export default function ProfileDetail() {
                 className="max-h-full max-w-full object-contain drop-shadow"
               />
             ) : (
-              <div className="select-none text-5xl font-bold tracking-tight text-brand-800">
+              <div className="select-none text-5xl font-bold tracking-tight text-brand-800 dark:text-brand-450">
                 {initials(profile.startup_name || profile.founder_name)}
               </div>
             )}
@@ -69,76 +69,76 @@ export default function ProfileDetail() {
         </div>
 
         <div className="p-8 md:p-10">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white md:text-3xl">
             {profile.startup_name}
           </h1>
-          <p className="mt-1 text-slate-600">{profile.founder_name}</p>
+          <p className="mt-1 text-slate-600 dark:text-slate-400">{profile.founder_name}</p>
 
           <div className="mt-4 flex flex-wrap gap-2">
             <span className="pill">
               <span aria-hidden>{countryFlag(profile.country)}</span>
               {profile.country_name || profile.country}
             </span>
-            <span className="pill bg-brand-100 text-brand-800">{profile.industry}</span>
-            <span className="pill bg-accent-500/10 text-accent-600">Class of {profile.cohort_year}</span>
+            <span className="pill bg-brand-100 text-brand-800 dark:bg-brand-950/60 dark:text-brand-300">{profile.industry}</span>
+            <span className="pill bg-accent-500/10 text-accent-600 dark:bg-accent-500/10 dark:text-accent-400">Class of {profile.cohort_year}</span>
           </div>
 
           {profile.tagline && (
-            <p className="mt-6 text-slate-700 leading-relaxed">{profile.tagline}</p>
+            <p className="mt-6 text-slate-700 dark:text-slate-300 leading-relaxed">{profile.tagline}</p>
           )}
 
-        <hr className="my-7 border-slate-100" />
+        <hr className="my-7 border-slate-100 dark:border-slate-800" />
 
         <dl className="grid gap-5 sm:grid-cols-2 text-sm">
           {profile.website && (
             <Row label="Website">
-              <a className="text-brand-800 hover:underline" href={profile.website} target="_blank" rel="noreferrer">
+              <a className="text-brand-800 dark:text-brand-400 hover:underline" href={profile.website} target="_blank" rel="noreferrer">
                 {profile.website.replace(/^https?:\/\//, "")}
               </a>
             </Row>
           )}
           {profile.linkedin_url && (
             <Row label="LinkedIn">
-              <a className="text-brand-800 hover:underline" href={profile.linkedin_url} target="_blank" rel="noreferrer">
+              <a className="text-brand-800 dark:text-brand-400 hover:underline" href={profile.linkedin_url} target="_blank" rel="noreferrer">
                 {profile.linkedin_url.replace(/^https?:\/\//, "")}
               </a>
             </Row>
           )}
           {profile.twitter_url && (
             <Row label="X / Twitter">
-              <a className="text-brand-800 hover:underline" href={profile.twitter_url} target="_blank" rel="noreferrer">
+              <a className="text-brand-800 dark:text-brand-400 hover:underline" href={profile.twitter_url} target="_blank" rel="noreferrer">
                 {profile.twitter_url.replace(/^https?:\/\//, "")}
               </a>
             </Row>
           )}
         </dl>
 
-        <hr className="my-7 border-slate-100" />
+        <hr className="my-7 border-slate-100 dark:border-slate-800" />
 
         {me ? (
           <div className="grid gap-3 sm:grid-cols-2 text-sm">
             <Row label="Email">
               {profile.contact_email ? (
-                <a className="text-brand-800 hover:underline" href={`mailto:${profile.contact_email}`}>
+                <a className="text-brand-800 dark:text-brand-400 hover:underline" href={`mailto:${profile.contact_email}`}>
                   {profile.contact_email}
                 </a>
               ) : (
-                <span className="text-slate-400">Not shared</span>
+                <span className="text-slate-400 dark:text-slate-500">Not shared</span>
               )}
             </Row>
             <Row label="Phone">
               {profile.contact_phone ? (
-                <span className="text-slate-700">{profile.contact_phone}</span>
+                <span className="text-slate-700 dark:text-slate-300">{profile.contact_phone}</span>
               ) : (
-                <span className="text-slate-400">Not shared</span>
+                <span className="text-slate-400 dark:text-slate-500">Not shared</span>
               )}
             </Row>
           </div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5 text-center">
-            <p className="text-sm text-slate-700">
+          <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-5 text-center">
+            <p className="text-sm text-slate-700 dark:text-slate-300">
               Contact info is shared with NetworkZ members.{" "}
-              <Link to="/sign-in" className="text-brand-800 font-semibold hover:underline">
+              <Link to="/sign-in" className="text-brand-800 dark:text-brand-400 font-semibold hover:underline">
                 Sign in to view
               </Link>
               .
@@ -155,7 +155,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
   return (
     <div>
       <dt className="label">{label}</dt>
-      <dd className="mt-1 text-slate-700">{children}</dd>
+      <dd className="mt-1 text-slate-700 dark:text-slate-300">{children}</dd>
     </div>
   );
 }

@@ -15,6 +15,17 @@
       name="description"
       content="NetworkZ is the community directory of startups that went through the Google for Startups Accelerator. Browse, search, and connect."
     />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'system';
+        const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
     <div id="root"></div>

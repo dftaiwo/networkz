@@ -113,3 +113,31 @@ def test_me_profile_complete_flag(client, capture_tokens):
     _create_profile(client, token)
     me = client.get("/api/auth/me", headers={"Authorization": f"Bearer {token}"}).json()
     assert me["profile_complete"] is True
+
+
+def test_profile_and_account_deletion(client, capture_tokens, db):
+    from app.models import User, Profile, MagicLinkToken
+
+    # 1. Sign up and create a profile
+    email = "delete_me@example.com"
+    token = _signup(client, capture_tokens, email)
+    profile_data = _create_profile(client, token)
+    profile_id = profile_data["id"]
+
+    # 2. Verify user, profile, and tokens exist in DB
+    user = db.query(User).filter(User.email == email).one()
+    profile = db.query(Profile).filter(Profile.id == profile_id).one()
+    user_id = user.id
+    tokens = db.query(MagicLinkToken).filter(MagicLinkToken.user_id == user_id).all()
+    assert len(tokens) > 0
+
+    # 3. Perform DELETE /profiles/me
+    r = client.delete("/api/profiles/me", headers={"Authorization": f"Bearer {token}"})
+    assert r.status_code == 204
+
+    # 4. Verify user, profile, and tokens are completely gone
+    db.expire_all()
+    assert db.query(User).filter(User.email == email).one_or_none() is None
+    assert db.query(Profile).filter(Profile.id == profile_id).one_or_none() is None
+    assert db.query(MagicLinkToken).filter(MagicLinkToken.user_id == user_id).all() == []
+

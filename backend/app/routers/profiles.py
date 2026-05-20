@@ -148,9 +148,8 @@ def update_my_profile(
 
 @router.delete("/me", status_code=status.HTTP_204_NO_CONTENT)
 def delete_my_profile(user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    if user.profile:
-        db.delete(user.profile)
-        db.commit()
+    db.delete(user)
+    db.commit()
     return None
 
 

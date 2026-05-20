@@ -41,7 +41,7 @@ export function LogoUploader({
       {/* Preview matches the card aspect ratio (16:7) so what you see is what others see */}
       <div
         className={`relative aspect-[16/7] overflow-hidden rounded-2xl border-2 border-dashed transition
-          ${dragOver ? "border-brand-500 bg-brand-50/50" : "border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]"}`}
+          ${dragOver ? "border-brand-500 bg-brand-50/50" : "border-slate-200 dark:border-slate-700 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]"}`}
         onDragOver={(e) => {
           e.preventDefault();
           setDragOver(true);
@@ -72,10 +72,10 @@ export function LogoUploader({
             />
           ) : (
             <div className="text-center">
-              <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-xl bg-white text-slate-400 ring-1 ring-slate-200 text-lg">
+              <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-xl bg-white dark:bg-slate-900 text-slate-400 dark:text-slate-500 ring-1 ring-slate-200 dark:ring-slate-700 text-lg">
                 ↑
               </div>
-              <p className="text-xs font-medium text-slate-500">
+              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                 Drop a logo here, or click below to upload
               </p>
             </div>
@@ -83,8 +83,8 @@ export function LogoUploader({
         </div>
 
         {uploading && (
-          <div className="absolute inset-0 grid place-items-center bg-white/70">
-            <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-brand-600" />
+          <div className="absolute inset-0 grid place-items-center bg-white dark:bg-slate-900/70">
+            <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-slate-300 dark:border-slate-700 border-t-brand-600" />
           </div>
         )}
       </div>
@@ -119,7 +119,7 @@ export function LogoUploader({
             Remove
           </button>
         )}
-        <p className="ml-auto text-xs text-slate-500">
+        <p className="ml-auto text-xs text-slate-500 dark:text-slate-400">
           JPG, PNG, or WebP · Up to 2 MB · Any aspect ratio — we won't crop it
         </p>
       </div>

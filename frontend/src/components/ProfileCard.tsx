@@ -15,13 +15,13 @@ export function ProfileCard({ profile }: { profile: Profile }) {
 
       {/* Body */}
       <div className="p-6">
-        <h3 className="truncate text-lg font-semibold tracking-tight text-slate-900">
+        <h3 className="truncate text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">
           {profile.startup_name}
         </h3>
-        <div className="truncate text-sm text-slate-600">{profile.founder_name}</div>
+        <div className="truncate text-sm text-slate-600 dark:text-slate-400">{profile.founder_name}</div>
 
         {profile.tagline && (
-          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600">
+          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
             {profile.tagline}
           </p>
         )}
@@ -37,7 +37,7 @@ export function ProfileCard({ profile }: { profile: Profile }) {
 
 function LogoPlate({ profile, display }: { profile: Profile; display: string }) {
   return (
-    <div className="relative aspect-[16/7] overflow-hidden border-b border-slate-100 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]">
+    <div className="relative aspect-[16/7] overflow-hidden border-b border-slate-100 dark:border-slate-800 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]">
       {/* Subtle pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -65,7 +65,7 @@ function LogoPlate({ profile, display }: { profile: Profile; display: string }) 
       </div>
 
       {/* Country chip — top-right */}
-      <div className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/85 px-2.5 py-0.5 text-xs font-medium text-slate-700 ring-1 ring-slate-200 backdrop-blur">
+      <div className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white dark:bg-slate-900/85 px-2.5 py-0.5 text-xs font-medium text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700 backdrop-blur">
         <span aria-hidden>{countryFlag(profile.country)}</span>
         <span className="hidden sm:inline">{profile.country_name || profile.country}</span>
         <span className="sm:hidden">{profile.country}</span>

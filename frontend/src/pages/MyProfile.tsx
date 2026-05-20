@@ -162,8 +162,8 @@ export default function MyProfile() {
     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">Your profile</h1>
-          <p className="text-slate-600 mt-1">Signed in as {me?.email}</p>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Your profile</h1>
+          <p className="text-slate-600 dark:text-slate-400 mt-1">Signed in as {me?.email}</p>
         </div>
         {profileId && me?.profile_complete && (
           <a
@@ -188,7 +188,7 @@ export default function MyProfile() {
           <Step2 form={form} update={update} reference={reference} />
         )}
 
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
           <div>
             {step === 2 && (
               <button
@@ -228,10 +228,10 @@ export default function MyProfile() {
 
       {/* Password card */}
       <div className="card p-6">
-        <h2 className="font-semibold text-slate-900">
+        <h2 className="font-semibold text-slate-900 dark:text-slate-100">
           {me?.has_password ? "Update your password" : "Set a password for faster sign-in"}
         </h2>
-        <p className="text-sm text-slate-600 mt-1">
+        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
           Optional. You can always sign in with a magic link.
         </p>
         <form onSubmit={savePassword} className="mt-4 flex flex-col sm:flex-row gap-3">
@@ -251,7 +251,7 @@ export default function MyProfile() {
       {/* Danger zone */}
       <div className="card p-6 border border-rose-200/60">
         <h2 className="font-semibold text-rose-700">Danger zone</h2>
-        <p className="text-sm text-slate-600 mt-1">Remove your profile and account from NetworkZ.</p>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Remove your profile and account from NetworkZ.</p>
         <button onClick={deleteProfile} className="mt-4 btn-ghost border-rose-200 text-rose-700 hover:bg-rose-50">
           Delete my profile
         </button>
@@ -280,21 +280,21 @@ function Stepper({
       type="button"
       onClick={onClick}
       className={`flex flex-1 items-center gap-3 rounded-xl px-4 py-3 text-left transition
-        ${active ? "bg-brand-50 ring-1 ring-brand-200" : "bg-white hover:bg-slate-50"}`}
+        ${active ? "bg-brand-50 ring-1 ring-brand-200" : "bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-800"}`}
     >
       <span
         className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-sm font-semibold
           ${active ? "bg-brand-800 text-white"
                   : done ? "bg-accent-500/20 text-accent-600"
-                          : "bg-slate-100 text-slate-500"}`}
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"}`}
       >
         {done && !active ? "✓" : n}
       </span>
       <div className="min-w-0">
-        <div className={`text-xs font-semibold uppercase tracking-wide ${active ? "text-brand-800" : "text-slate-500"}`}>
+        <div className={`text-xs font-semibold uppercase tracking-wide ${active ? "text-brand-800" : "text-slate-500 dark:text-slate-400"}`}>
           Step {n}
         </div>
-        <div className="text-sm font-medium text-slate-900 truncate">{label}</div>
+        <div className="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">{label}</div>
       </div>
     </button>
   );
@@ -318,8 +318,8 @@ function Step1({
   return (
     <>
       <div>
-        <h2 className="text-lg font-semibold text-slate-900">About your startup</h2>
-        <p className="text-sm text-slate-600 mt-1">The basics shown on your directory card.</p>
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">About your startup</h2>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">The basics shown on your directory card.</p>
       </div>
 
       <LogoUploader value={form.logo_path} onChange={(p) => update("logo_path", p)} />
@@ -343,7 +343,7 @@ function Step1({
           onChange={(e) => update("tagline", e.target.value)}
           maxLength={280}
         />
-        <p className="mt-1 text-xs text-slate-500">{form.tagline.length}/280</p>
+        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{form.tagline.length}/280</p>
       </Field>
     </>
   );
@@ -359,8 +359,8 @@ function Step2({
   return (
     <>
       <div>
-        <h2 className="text-lg font-semibold text-slate-900">Program & contact</h2>
-        <p className="text-sm text-slate-600 mt-1">Cohort details, links, and how members can reach you.</p>
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Program & contact</h2>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Cohort details, links, and how members can reach you.</p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -403,11 +403,11 @@ function Step2({
         </Field>
       </div>
 
-      <fieldset className="rounded-2xl bg-slate-50 ring-1 ring-slate-100 p-5">
-        <legend className="px-2 -ml-2 text-xs font-semibold uppercase tracking-wide text-slate-600">
+      <fieldset className="rounded-2xl bg-slate-50 dark:bg-slate-800 ring-1 ring-slate-100 dark:ring-slate-800 p-5">
+        <legend className="px-2 -ml-2 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">
           Contact info (members-only)
         </legend>
-        <p className="text-xs text-slate-500 -mt-1 mb-4">
+        <p className="text-xs text-slate-500 dark:text-slate-400 -mt-1 mb-4">
           Hidden from the public directory. Only signed-in NetworkZ members see these.
         </p>
         <div className="grid gap-5 sm:grid-cols-2">

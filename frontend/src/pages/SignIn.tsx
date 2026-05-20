@@ -40,8 +40,8 @@ export default function SignIn() {
   return (
     <div className="mx-auto max-w-md px-4 py-16">
       <div className="card p-8">
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Sign in</h1>
-        <p className="mt-2 text-sm text-slate-600">Welcome back.</p>
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Sign in</h1>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Welcome back.</p>
 
         {sent ? (
           <div className="mt-6 rounded-xl bg-accent-500/10 text-accent-600 p-4 text-sm">
@@ -86,17 +86,17 @@ export default function SignIn() {
 
         <div className="mt-6 text-center text-sm">
           {mode === "magic" ? (
-            <button className="text-slate-500 hover:text-slate-900 underline" onClick={() => setMode("password")}>
+            <button className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline" onClick={() => setMode("password")}>
               Have a password? Sign in with password
             </button>
           ) : (
-            <button className="text-slate-500 hover:text-slate-900 underline" onClick={() => setMode("magic")}>
+            <button className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline" onClick={() => setMode("magic")}>
               Use a magic link instead
             </button>
           )}
         </div>
 
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
           New here?{" "}
           <Link to="/sign-up" className="text-brand-800 font-semibold hover:underline">Create an account</Link>
         </p>

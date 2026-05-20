@@ -70,15 +70,15 @@ export default function Directory() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Alumni directory</h1>
-        <p className="text-slate-600 mt-1">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Alumni directory</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">
           Browse startups that went through the Google for Startups Accelerator.
         </p>
       </div>
 
       <FilterBar reference={reference} value={filters} onChange={updateFilters} />
 
-      <div className="flex items-center justify-between text-sm text-slate-500">
+      <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
         <div>{total > 0 ? `${total} startup${total === 1 ? "" : "s"}` : ""}</div>
         <div>{totalPages > 1 ? `Page ${page} of ${totalPages}` : ""}</div>
       </div>

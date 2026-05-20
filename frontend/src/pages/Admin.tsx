@@ -52,8 +52,8 @@ export default function Admin() {
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">Moderation</h1>
-          <p className="text-slate-600 mt-1">Hide spam profiles or restore them.</p>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Moderation</h1>
+          <p className="text-slate-600 dark:text-slate-400 mt-1">Hide spam profiles or restore them.</p>
         </div>
         <input
           className="input max-w-xs"
@@ -65,7 +65,7 @@ export default function Admin() {
 
       <div className="card overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-600 text-left">
+          <thead className="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-left">
             <tr>
               <th className="px-4 py-3 font-semibold">Startup</th>
               <th className="px-4 py-3 font-semibold">Founder</th>
@@ -78,18 +78,18 @@ export default function Admin() {
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={7} className="px-4 py-8 text-center text-slate-500">No profiles.</td></tr>
+              <tr><td colSpan={7} className="px-4 py-8 text-center text-slate-500 dark:text-slate-400">No profiles.</td></tr>
             ) : filtered.map((r) => (
-              <tr key={r.id} className="border-t border-slate-100">
+              <tr key={r.id} className="border-t border-slate-100 dark:border-slate-800">
                 <td className="px-4 py-3">
-                  <Link to={`/directory/${r.id}`} className="font-medium text-slate-900 hover:underline">
-                    {r.startup_name || <span className="text-slate-400">(empty)</span>}
+                  <Link to={`/directory/${r.id}`} className="font-medium text-slate-900 dark:text-slate-100 hover:underline">
+                    {r.startup_name || <span className="text-slate-400 dark:text-slate-500">(empty)</span>}
                   </Link>
                 </td>
-                <td className="px-4 py-3 text-slate-600">{r.founder_name}</td>
-                <td className="px-4 py-3 text-slate-600">{r.country_name}</td>
-                <td className="px-4 py-3 text-slate-600">{r.cohort_year || "—"}</td>
-                <td className="px-4 py-3 text-slate-600">{r.industry}</td>
+                <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{r.founder_name}</td>
+                <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{r.country_name}</td>
+                <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{r.cohort_year || "—"}</td>
+                <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{r.industry}</td>
                 <td className="px-4 py-3">
                   {r.is_hidden
                     ? <span className="pill bg-rose-100 text-rose-700">Hidden</span>
@@ -99,7 +99,7 @@ export default function Admin() {
                   {r.is_hidden ? (
                     <button onClick={() => unhide(r.id)} className="text-xs font-semibold text-brand-800 hover:underline">Restore</button>
                   ) : (
-                    <button onClick={() => hide(r.id)} className="text-xs font-semibold text-slate-700 hover:underline">Hide</button>
+                    <button onClick={() => hide(r.id)} className="text-xs font-semibold text-slate-700 dark:text-slate-300 hover:underline">Hide</button>
                   )}
                   <button onClick={() => remove(r.id)} className="text-xs font-semibold text-rose-700 hover:underline">Delete</button>
                 </td>

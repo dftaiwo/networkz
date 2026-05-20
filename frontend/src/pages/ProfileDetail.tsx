@@ -24,7 +24,7 @@ export default function ProfileDetail() {
   if (notFound) {
     return (
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-semibold text-slate-900">Profile not found</h1>
+        <h1 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">Profile not found</h1>
         <Link to="/directory" className="mt-4 inline-flex btn-primary">Back to directory</Link>
       </div>
     );
@@ -36,7 +36,7 @@ export default function ProfileDetail() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between">
-        <Link to="/directory" className="text-sm text-slate-500 hover:text-slate-900">← Directory</Link>
+        <Link to="/directory" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">← Directory</Link>
         {isOwner && (
           <Link to="/my-profile" className="btn-ghost text-xs">Edit your profile</Link>
         )}
@@ -44,7 +44,7 @@ export default function ProfileDetail() {
 
       <div className="mt-4 card overflow-hidden">
         {/* Hero logo plate — natural aspect, large */}
-        <div className="relative aspect-[16/6] overflow-hidden border-b border-slate-100 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]">
+        <div className="relative aspect-[16/6] overflow-hidden border-b border-slate-100 dark:border-slate-800 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eef2ff_100%)]">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.05]"
             style={{
@@ -69,10 +69,10 @@ export default function ProfileDetail() {
         </div>
 
         <div className="p-8 md:p-10">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 md:text-3xl">
             {profile.startup_name}
           </h1>
-          <p className="mt-1 text-slate-600">{profile.founder_name}</p>
+          <p className="mt-1 text-slate-600 dark:text-slate-400">{profile.founder_name}</p>
 
           <div className="mt-4 flex flex-wrap gap-2">
             <span className="pill">
@@ -84,10 +84,10 @@ export default function ProfileDetail() {
           </div>
 
           {profile.tagline && (
-            <p className="mt-6 text-slate-700 leading-relaxed">{profile.tagline}</p>
+            <p className="mt-6 text-slate-700 dark:text-slate-300 leading-relaxed">{profile.tagline}</p>
           )}
 
-        <hr className="my-7 border-slate-100" />
+        <hr className="my-7 border-slate-100 dark:border-slate-800" />
 
         <dl className="grid gap-5 sm:grid-cols-2 text-sm">
           {profile.website && (
@@ -113,7 +113,7 @@ export default function ProfileDetail() {
           )}
         </dl>
 
-        <hr className="my-7 border-slate-100" />
+        <hr className="my-7 border-slate-100 dark:border-slate-800" />
 
         {me ? (
           <div className="grid gap-3 sm:grid-cols-2 text-sm">
@@ -123,20 +123,20 @@ export default function ProfileDetail() {
                   {profile.contact_email}
                 </a>
               ) : (
-                <span className="text-slate-400">Not shared</span>
+                <span className="text-slate-400 dark:text-slate-500">Not shared</span>
               )}
             </Row>
             <Row label="Phone">
               {profile.contact_phone ? (
-                <span className="text-slate-700">{profile.contact_phone}</span>
+                <span className="text-slate-700 dark:text-slate-300">{profile.contact_phone}</span>
               ) : (
-                <span className="text-slate-400">Not shared</span>
+                <span className="text-slate-400 dark:text-slate-500">Not shared</span>
               )}
             </Row>
           </div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5 text-center">
-            <p className="text-sm text-slate-700">
+          <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-5 text-center">
+            <p className="text-sm text-slate-700 dark:text-slate-300">
               Contact info is shared with NetworkZ members.{" "}
               <Link to="/sign-in" className="text-brand-800 font-semibold hover:underline">
                 Sign in to view
@@ -155,7 +155,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
   return (
     <div>
       <dt className="label">{label}</dt>
-      <dd className="mt-1 text-slate-700">{children}</dd>
+      <dd className="mt-1 text-slate-700 dark:text-slate-300">{children}</dd>
     </div>
   );
 }

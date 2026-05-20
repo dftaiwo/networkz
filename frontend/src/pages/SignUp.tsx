@@ -25,8 +25,8 @@ export default function SignUp() {
   return (
     <div className="mx-auto max-w-md px-4 py-16">
       <div className="card p-8">
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Join NetworkZ</h1>
-        <p className="mt-2 text-sm text-slate-600">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Join NetworkZ</h1>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           Enter your email and we'll send you a one-time magic link to finish setting up.
         </p>
 
@@ -54,7 +54,7 @@ export default function SignUp() {
           </form>
         )}
 
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
           Already a member?{" "}
           <Link to="/sign-in" className="text-brand-800 font-semibold hover:underline">Sign in</Link>
         </p>
